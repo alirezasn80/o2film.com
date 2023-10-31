@@ -41,7 +41,8 @@ fun WebViewFragment.requestNoBatteryOptimizations(rootView: CoordinatorLayout) {
             !appPreferences.ignoreBatteryOptimizations &&
             !powerManager.isIgnoringBatteryOptimizations(BuildConfig.APPLICATION_ID)
         ) {
-            Snackbar.make(rootView, R.string.battery_optimizations_message, Snackbar.LENGTH_INDEFINITE).apply {
+
+           /* Snackbar.make(rootView, R.string.battery_optimizations_message, Snackbar.LENGTH_INDEFINITE).apply {
                 setAction(android.R.string.ok) {
                     try {
                         val intent = Intent(Settings.ACTION_IGNORE_BATTERY_OPTIMIZATION_SETTINGS)
@@ -54,7 +55,8 @@ fun WebViewFragment.requestNoBatteryOptimizations(rootView: CoordinatorLayout) {
                     appPreferences.ignoreBatteryOptimizations = true
                 }
                 show()
-            }
+            }*/
+
         }
     }
 }

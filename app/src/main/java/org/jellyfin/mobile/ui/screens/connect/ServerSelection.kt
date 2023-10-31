@@ -126,50 +126,50 @@ fun ServerSelection(
 
     //Design
     Column {
-        Text(
-            text = stringResource(R.string.connect_to_server_title),
-            modifier = Modifier.padding(bottom = 8.dp),
-            style = MaterialTheme.typography.h5,
-        )
-        Crossfade(
-            targetState = serverSelectionMode,
-            label = "Server selection mode",
-        ) { selectionType ->
-            when (selectionType) {
-                ServerSelectionMode.ADDRESS -> AddressSelection(
-                    text = hostname,
-                    errorText = when {
-                        externalError -> stringResource(R.string.connection_error_cannot_connect)
-                        else -> (checkUrlState as? CheckUrlState.Error)?.message
-                    },
-                    loading = checkUrlState is CheckUrlState.Pending,
-                    onTextChange = { value ->
-                        externalError = false
-                        checkUrlState = CheckUrlState.Unchecked
-                        hostname = value
-                    },
-                    onDiscoveryClick = {
-                        externalError = false
-                        keyboardController?.hide()
-                        serverSelectionMode = ServerSelectionMode.AUTO_DISCOVERY
-                    },
-                    onSubmit = {
-                        onSubmit()
-                    },
-                )
-                ServerSelectionMode.AUTO_DISCOVERY -> ServerDiscoveryList(
-                    serverSuggestions = serverSuggestions,
-                    onGoBack = {
-                        serverSelectionMode = ServerSelectionMode.ADDRESS
-                    },
-                    onSelectServer = { url ->
-                        hostname = url
-                        serverSelectionMode = ServerSelectionMode.ADDRESS
-                        onSubmit()
-                    },
-                )
-            }
-        }
+        /*   Text(
+               text = stringResource(R.string.connect_to_server_title),
+               modifier = Modifier.padding(bottom = 8.dp),
+               style = MaterialTheme.typography.h5,
+           )
+           Crossfade(
+               targetState = serverSelectionMode,
+               label = "Server selection mode",
+           ) { selectionType ->
+               when (selectionType) {
+                   ServerSelectionMode.ADDRESS -> AddressSelection(
+                       text = hostname,
+                       errorText = when {
+                           externalError -> stringResource(R.string.connection_error_cannot_connect)
+                           else -> (checkUrlState as? CheckUrlState.Error)?.message
+                       },
+                       loading = checkUrlState is CheckUrlState.Pending,
+                       onTextChange = { value ->
+                           externalError = false
+                           checkUrlState = CheckUrlState.Unchecked
+                           hostname = value
+                       },
+                       onDiscoveryClick = {
+                           externalError = false
+                           keyboardController?.hide()
+                           serverSelectionMode = ServerSelectionMode.AUTO_DISCOVERY
+                       },
+                       onSubmit = {
+                           onSubmit()
+                       },
+                   )
+                   ServerSelectionMode.AUTO_DISCOVERY -> ServerDiscoveryList(
+                       serverSuggestions = serverSuggestions,
+                       onGoBack = {
+                           serverSelectionMode = ServerSelectionMode.ADDRESS
+                       },
+                       onSelectServer = { url ->
+                           hostname = url
+                           serverSelectionMode = ServerSelectionMode.ADDRESS
+                           onSubmit()
+                       },
+                   )
+               }
+           }*/
     }
 }
 
